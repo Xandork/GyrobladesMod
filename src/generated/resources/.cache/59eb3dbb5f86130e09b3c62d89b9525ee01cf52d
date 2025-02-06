@@ -1,0 +1,10 @@
+// 1.21	2025-01-29T11:27:44.4952756	Loot Tables
+72ec4257a807287d4ec260ae1e5de034efcc4fc2 data/gyrobladesmod/loot_table/blocks/barrel_arena.json
+f7decfa372b6fc463c41cdaa3d35ac86ff48d0e1 data/gyrobladesmod/loot_table/blocks/gyrite_block.json
+43c0e8e4148e3d11ac7722e9a73bf156fe7fc12c data/gyrobladesmod/loot_table/blocks/gyrite_deepslate_ore.json
+e165c8f140c82429e0889929038bfd166124715b data/gyrobladesmod/loot_table/blocks/gyrite_ore.json
+4f87fe3aa9373586cd21119298a6096533119ddf data/gyrobladesmod/loot_table/blocks/gyro_arena_core.json
+81048f20c204acf0afbf0a5140373055945d1c0b data/gyrobladesmod/loot_table/blocks/gyro_arena_corner.json
+1dcb79909901b7ed7444c64ef721d9c65f09d8c9 data/gyrobladesmod/loot_table/blocks/gyro_arena_edge.json
+5e0a4ec21425dea8daecbee0caf492fc97daf8ea data/gyrobladesmod/loot_table/blocks/gyro_bench.json
+c582e12f54c11270f1fc87fab9488ea3ccd19b5e data/gyrobladesmod/loot_table/blocks/gyro_table.json

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "gyrobladesmod:block/gyro_arena_edge"
+    },
+    "facing=south": {
+      "model": "gyrobladesmod:block/gyro_arena_edge",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "gyrobladesmod:block/gyro_arena_edge",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "gyrobladesmod:block/gyro_arena_edge",
+      "y": 270
+    }
+  }
+}

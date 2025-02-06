@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "gyrobladesmod:block/gyrite_deepslate_ore"
+  }
+}

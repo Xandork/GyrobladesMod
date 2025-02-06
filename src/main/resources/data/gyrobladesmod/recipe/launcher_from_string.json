@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "#  ",
+    " # ",
+    "  #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "gyrobladesmod:launcher",
+    "count": 1
+  }
+}

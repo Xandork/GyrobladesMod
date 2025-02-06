@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "gyrobladesmod:bai_shell"
+    },
+    "S": {
+      "item": "minecraft:sand"
+    },
+    "W": {
+      "item": "minecraft:honeycomb"
+    }
+  },
+  "pattern": [
+    " W ",
+    " S ",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "gyrobladesmod:shell_beigoma"
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:smithing_transform",
+    "base": {
+        "item": "minecraft:stone"
+    },
+    "addition": {
+        "item": "gyrobladesmod:gyrite_crystal"
+    },
+    "template": {
+        "item": "gyrobladesmod:bai_shell"
+    },
+    "result": {
+        "id": "gyrobladesmod:stone_beigoma",
+        "count": 1
+    }
+}

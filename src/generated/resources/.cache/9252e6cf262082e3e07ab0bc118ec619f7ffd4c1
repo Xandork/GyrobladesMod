@@ -1,0 +1,5 @@
+// 1.21	2025-01-29T11:27:44.4942749	Tags for minecraft:block mod id gyrobladesmod
+7c74ec7b64044d85a001f5f658bd919e842469b3 data/minecraft/tags/block/mineable/axe.json
+b63c9e015a681c23f823bbc445feb40aed599627 data/minecraft/tags/block/mineable/pickaxe.json
+0db9417b55caeaac6925ae2457b510f05fd928a3 data/minecraft/tags/block/needs_diamond_tool.json
+1864e34e23504e2ab8c319c41b8495994cb93055 data/minecraft/tags/block/needs_iron_tool.json

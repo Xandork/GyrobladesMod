@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "gyrobladesmod:block/barrel_arena"
+    },
+    "facing=south": {
+      "model": "gyrobladesmod:block/barrel_arena",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "gyrobladesmod:block/barrel_arena",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "gyrobladesmod:block/barrel_arena",
+      "y": 270
+    }
+  }
+}

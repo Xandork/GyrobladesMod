@@ -1,0 +1,69 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"2": "gyrobladesmod:block/gyro_arena_edge",
+		"particle": "gyrobladesmod:block/gyro_arena_core"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 2, 4],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 0, 4]},
+			"faces": {
+				"north": {"uv": [0.25, 0.25, 0.75, 0.75], "texture": "#2"},
+				"east": {"uv": [1.25, 0.25, 1.75, 0.75], "texture": "#2"},
+				"south": {"uv": [2.25, 0.25, 2.75, 0.75], "texture": "#2"},
+				"west": {"uv": [3.25, 0.25, 3.75, 0.75], "texture": "#2"},
+				"up": {"uv": [4.25, 0.25, 4.75, 0.75], "texture": "#2"},
+				"down": {"uv": [5.25, 0.25, 5.75, 0.75], "texture": "#2"}
+			}
+		},
+		{
+			"from": [0, 0, 4],
+			"to": [16, 3, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 12]},
+			"faces": {
+				"north": {"uv": [6.25, 0.25, 6.75, 0.75], "texture": "#2"},
+				"east": {"uv": [7.25, 0.25, 7.75, 0.75], "texture": "#2"},
+				"south": {"uv": [8.25, 0.25, 8.75, 0.75], "texture": "#2"},
+				"west": {"uv": [9.25, 0.25, 9.75, 0.75], "texture": "#2"},
+				"up": {"uv": [10.25, 0.25, 10.75, 0.75], "texture": "#2"},
+				"down": {"uv": [11.25, 0.25, 11.75, 0.75], "texture": "#2"}
+			}
+		},
+		{
+			"from": [0, 0, 8],
+			"to": [16, 4, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [12, 0, 20]},
+			"faces": {
+				"north": {"uv": [12.25, 0.25, 12.75, 0.75], "texture": "#2"},
+				"east": {"uv": [13.25, 0.25, 13.75, 0.75], "texture": "#2"},
+				"south": {"uv": [14.25, 0.25, 14.75, 0.75], "texture": "#2"},
+				"west": {"uv": [15.25, 0.25, 15.75, 0.75], "texture": "#2"},
+				"up": {"uv": [0.25, 1.25, 0.75, 1.75], "texture": "#2"},
+				"down": {"uv": [1.25, 1.25, 1.75, 1.75], "texture": "#2"}
+			}
+		},
+		{
+			"from": [0, 0, 12],
+			"to": [16, 8, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [16, 0, 28]},
+			"faces": {
+				"north": {"uv": [2.25, 1.25, 2.75, 1.75], "texture": "#2"},
+				"east": {"uv": [3.25, 1.25, 3.75, 1.75], "texture": "#2"},
+				"south": {"uv": [4.25, 1.25, 4.75, 1.75], "texture": "#2"},
+				"west": {"uv": [5.25, 1.25, 5.75, 1.75], "texture": "#2"},
+				"up": {"uv": [6.25, 1.25, 6.75, 1.75], "texture": "#2"},
+				"down": {"uv": [7.25, 1.25, 7.75, 1.75], "texture": "#2"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "efsv",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1, 2, 3]
+		}
+	]
+}

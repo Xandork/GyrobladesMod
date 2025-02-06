@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "gyrobladesmod:gyrite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "gyrobladesmod:gyrite_crystal"
+  }
+}

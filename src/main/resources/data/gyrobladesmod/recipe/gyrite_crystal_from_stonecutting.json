@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "gyrobladesmod:raw_gyrite"
+  },
+  "result": "gyrobladesmod:gyrite_crystal"
+}

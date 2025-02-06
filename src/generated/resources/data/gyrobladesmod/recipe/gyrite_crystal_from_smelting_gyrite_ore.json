@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "gyrite",
+  "ingredient": {
+    "item": "gyrobladesmod:gyrite_ore"
+  },
+  "result": {
+    "id": "gyrobladesmod:gyrite_crystal"
+  }
+}
