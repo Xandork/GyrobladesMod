@@ -32,6 +32,13 @@ public class ModCreativeModeTabs {
 
                     })
                     .build());
+    public static final RegistryObject<CreativeModeTab> GYROBLADES_PARTS_TAB = CREATIVE_MODE_TABS.register("gyroblades_parts_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(PartItems.GOLD_RING1.get()))
+                    .title(Component.translatable("creativetab.gyroblades_tab"))
+                    .displayItems((pParameters,pOutput) -> {
+                        PartItems.ITEMS.getEntries().forEach(item -> pOutput.accept(item.get()));
+                    })
+                    .build());
 
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TABS.register(eventBus);

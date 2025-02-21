@@ -67,7 +67,7 @@ public class BeigomaProjectileEntity extends ThrowableItemProjectile {
                 chicken.setTame(true, false);
                 chicken.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
                 this.level().addFreshEntity(chicken);
-                chicken.beigoma = this.getItem();
+                //chicken.beigoma = this.getItem();
                 chicken.setItemInHand(InteractionHand.MAIN_HAND, this.getItem());
                 chicken.setAttributes(this.getName(),weightstability,speedmaneuverability,jumpheight,attackdamage,knockback);
             }
@@ -107,6 +107,9 @@ public class BeigomaProjectileEntity extends ThrowableItemProjectile {
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
         if(!this.level().isClientSide()){
+
+            pResult.getEntity().hurt(this.damageSources().thrown(this,this.getOwner()),4);
+
             this.level().broadcastEntityEvent(this,((byte) 3));
             //this.level().setBlock(blockPosition(), ((GyroTableBlock) ModBlocks.GYRO_TABLE.get()).getRandomBlockState(),3);
 
@@ -125,7 +128,7 @@ public class BeigomaProjectileEntity extends ThrowableItemProjectile {
                 chicken.setTame(true, false);
                 chicken.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
                 this.level().addFreshEntity(chicken);
-                chicken.beigoma = this.getItem();
+                //chicken.beigoma = this.getItem();
                 chicken.setItemInHand(InteractionHand.MAIN_HAND, this.getItem());
                 chicken.setAttributes(this.getName(),weightstability,speedmaneuverability,jumpheight,attackdamage,knockback);
                 chicken.setCustomNameVisible(false);

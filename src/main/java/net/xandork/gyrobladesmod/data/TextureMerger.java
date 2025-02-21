@@ -40,26 +40,6 @@ public class TextureMerger implements PreparableReloadListener {
     private static final Minecraft minecraft = Minecraft.getInstance();
     private static final Map<List<ResourceLocation>, ResourceLocation> textureCache = new HashMap<>();
 
-    /**
-     * Loads a texture as a NativeImage.
-     */
-    /*
-    public static NativeImage loadTexture(ResourceLocation textureLocation) {
-        try {
-            var resource = minecraft.getResourceManager().getResource(textureLocation);
-            if (resource.isPresent()) {
-                return NativeImage.read(resource.get().open());
-            } else {
-                System.err.println("Texture not found: " + textureLocation);
-                return null;
-            }
-        } catch (IOException e) {
-            System.err.println("Failed to load texture: " + textureLocation);
-            return null;
-        }
-    }
-    */
-
     public static NativeImage loadTexture(ResourceLocation textureLocation) {
         ResourceManager resourceManager = Minecraft.getInstance().getResourceManager();
 
@@ -123,30 +103,6 @@ public class TextureMerger implements PreparableReloadListener {
 
         return mergedImage;
     }
-
-    /**
-     * Registers the merged texture dynamically, avoiding redundant registrations.
-     */
-    /*
-    public static ResourceLocation registerMergedTexture(List<ResourceLocation> textureLocations, NativeImage mergedImage) {
-        if (mergedImage == null) return null;
-
-        // Check cache to prevent redundant registrations
-        if (textureCache.containsKey(textureLocations)) {
-            return textureCache.get(textureLocations);
-        }
-
-        // Generate a unique texture name based on input textures
-        String textureName = generateTextureName(textureLocations);
-        ResourceLocation mergedTextureLocation = ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "generated/" + textureName + ".png");
-
-        DynamicTexture dynamicTexture = new DynamicTexture(mergedImage);
-        minecraft.getTextureManager().register(mergedTextureLocation, dynamicTexture);
-
-        // Store in cache
-        textureCache.put(textureLocations, mergedTextureLocation);
-        return mergedTextureLocation;
-    }*/
 
     public static ResourceLocation registerMergedTexture(List<ResourceLocation> textureLocations, NativeImage mergedImage) {
         if (mergedImage == null) return null;

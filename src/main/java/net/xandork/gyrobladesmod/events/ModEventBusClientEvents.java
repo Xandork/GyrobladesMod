@@ -2,6 +2,7 @@ package net.xandork.gyrobladesmod.events;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -12,6 +13,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -21,6 +23,7 @@ import net.xandork.gyrobladesmod.GyrobladesMod;
 import net.xandork.gyrobladesmod.data.TextureMerger;
 import net.xandork.gyrobladesmod.entity.client.BeigomaModel;
 import net.xandork.gyrobladesmod.item.ModItems;
+import net.xandork.gyrobladesmod.item.client.ColorShiftedItemRenderer;
 import net.xandork.gyrobladesmod.item.client.GyrobladeItemRenderer;
 
 import java.util.List;
@@ -59,29 +62,22 @@ public class ModEventBusClientEvents {
 
     // Register item renderers
     @SubscribeEvent
-    //@OnlyIn(Dist.CLIENT)
     public static void onClientSetup(FMLClientSetupEvent event) {
-        // Register the custom renderer
+        // Register the custom renderer for the Gyroblade item
         GyrobladeItemRenderer.registerItemRenderer();
 
         System.out.println("Client setup running...");
 
-        // Register textures (you could do this with some logic to trigger it based on items)
-
+        // Register any additional textures or initialization logic (if necessary)
         registerMergedTextures();
 
-        // Register the item initialization client-side
-        //ModItems.initializeClient(event.getModEventBus());
-
-        GyrobladeItemRenderer.registerItemRenderer();
-
-        //ItemProperties.register(ModItems.GYROBLADE_ITEM.get(),
-        //        ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "gyroblade"),
-        //        (stack, world, entity, seed) -> 1.0F
-        //);
+        // Any other client-side initialization for items can go here
 
         System.out.println("Client setup executed!");
+
+        System.out.println("=== Loaded Recipes ===");
     }
+
     private static void registerMergedTextures() {
         // Example textures that you want to merge
         List<ResourceLocation> textureList = List.of(
@@ -108,5 +104,10 @@ public class ModEventBusClientEvents {
                 ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "gyroblade"),
                 (stack, world, entity, seed) -> 1.0f
         );
+        /*ItemProperties.register(
+                ModItems.GYRO_RING.get(),
+                ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "gyro_ring"),
+                (stack, world, entity, seed) -> 1.0f
+        );*/
     }
 }

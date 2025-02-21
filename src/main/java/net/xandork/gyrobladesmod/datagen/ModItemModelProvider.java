@@ -5,6 +5,7 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.xandork.gyrobladesmod.GyrobladesMod;
 import net.xandork.gyrobladesmod.item.ModItems;
+import net.xandork.gyrobladesmod.item.PartItems;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -22,7 +23,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BAI_SHELL.get());
         basicItem(ModItems.SHELL_BEIGOMA.get());
         basicItem(ModItems.GYRO_ARENA_ITEM.get());
+        //basicItem(ModItems.GYRO_RING.get());
 
-
+        PartItems.ITEMS.getEntries().forEach(item -> basicItem(item.get()));
     }
 }

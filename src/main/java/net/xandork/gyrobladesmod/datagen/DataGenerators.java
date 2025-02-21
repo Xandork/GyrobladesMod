@@ -2,6 +2,7 @@ package net.xandork.gyrobladesmod.datagen;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -37,5 +38,8 @@ public class DataGenerators {
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(packOutput, existingFileHelper));
 
         generator.addProvider(event.includeServer(), new ModWorldGenProvider(event.getGenerator().getPackOutput(),lookupProvider));
+
+        //generator.addProvider(true, (DataProvider.Factory<ModTagsProvider>) output -> new ModTagsProvider(packOutput, lookupProvider, existingFileHelper));
+
     }
 }

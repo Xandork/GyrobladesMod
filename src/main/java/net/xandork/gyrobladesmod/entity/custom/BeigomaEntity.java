@@ -6,6 +6,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -16,6 +17,7 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.animal.horse.Llama;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.entity.monster.PatrollingMonster;
 import net.minecraft.world.entity.player.Player;
@@ -30,6 +32,8 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.level.NoteBlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.xandork.gyrobladesmod.GyrobladesMod;
 import net.xandork.gyrobladesmod.block.ModBlocks;
 import org.jetbrains.annotations.Nullable;
 import org.w3c.dom.Attr;
@@ -42,6 +46,8 @@ public class BeigomaEntity extends TamableAnimal{
     int jumpheight;
     int attackdamage;
     int knockback;
+
+    float spin;
 
     private float rotation;
     public BeigomaEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel){
@@ -77,13 +83,13 @@ public class BeigomaEntity extends TamableAnimal{
     private void checkSurface(){
         //Blocks[] blocks = new Blocks{Blocks.BLACK_WOOL.getClass()};
         if(this.isInLiquid()){
-            this.setHealth(this.getHealth()-1);
+            this.hurt(this.damageSources().generic(),1);
         }
         if(this.level().getBlockState(this.getOnPos()).getBlock().getName().toString().endsWith("WOOL")){
-            this.setHealth(this.getHealth()-1);
+            this.hurt(this.damageSources().generic(),1);
         }
         if(this.level().getBlockState(this.getOnPos()).getBlock() == Blocks.GRASS_BLOCK){
-            this.setHealth(this.getHealth()-1);
+            this.hurt(this.damageSources().generic(),1);
         }
         if(this.level().getBlockState(this.getOnPos().north()).getBlock() == ModBlocks.GYRO_ARENA_CORE.get() ||
                 this.level().getBlockState(this.getOnPos().north().below()).getBlock() == ModBlocks.GYRO_ARENA_CORE.get()){
@@ -242,5 +248,66 @@ public class BeigomaEntity extends TamableAnimal{
     public @Nullable AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
         return null;
     }
-    
+
+    @Mod.EventBusSubscriber(modid = GyrobladesMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+    public class MobDeathEventHandler {
+        @SubscribeEvent
+        public static void onMobDeath(LivingDeathEvent event) {
+            LivingEntity entity = event.getEntity();
+
+            // Ensure it's a mob (and not a player)
+            if (entity instanceof Mob mob) {
+                // Get the item from the main hand
+                ItemStack heldItem = mob.getMainHandItem();
+
+                // Drop the item if it's not empty
+                if (!heldItem.isEmpty() && !mob.level().isClientSide) {
+                    ItemEntity itemDrop = new ItemEntity(
+                            mob.level(),  // World
+                            mob.getX(), mob.getY(), mob.getZ(),  // Position
+                            heldItem.copy() // Copy the item stack
+                    );
+
+                    // Make the item drop naturally
+                    mob.level().addFreshEntity(itemDrop);
+
+                    // Clear the mob's hand after dropping
+                    mob.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
+                }
+            }
+        }
+    }
+    @Override
+    public EquipmentSlot getEquipmentSlotForItem(ItemStack stack) {
+        return EquipmentSlot.MAINHAND; // Adjust for different slots if needed
+    }
+    /*
+    @Override
+    protected void dropEquipment() {
+        super.dropEquipment(); // Call superclass method to ensure default behavior
+
+        if (!this.level().isClientSide) { // Ensure this runs only on the server side
+            for (EquipmentSlot slot : EquipmentSlot.values()) {
+                ItemStack stack = this.getItemBySlot(slot);
+                if (!stack.isEmpty()) {
+                    this.spawnAtLocation(stack); // Drops the item in the world
+                    this.setItemSlot(slot, ItemStack.EMPTY); // Clears the slot
+                }
+            }
+        }
+    }*/
+    @Override
+    public void die(DamageSource source) {
+        super.die(source);
+
+        if (!this.level().isClientSide) { // Ensure this runs only on the server
+            for (EquipmentSlot slot : EquipmentSlot.values()) {
+                ItemStack stack = this.getItemBySlot(slot);
+                if (!stack.isEmpty()) {
+                    this.spawnAtLocation(stack); // Drop the item
+                    this.setItemSlot(slot, ItemStack.EMPTY); // Clear the slot
+                }
+            }
+        }
+    }
 }

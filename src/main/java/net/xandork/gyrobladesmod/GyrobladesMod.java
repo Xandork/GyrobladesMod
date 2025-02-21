@@ -2,10 +2,10 @@ package net.xandork.gyrobladesmod;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -21,10 +21,10 @@ import net.xandork.gyrobladesmod.component.ModDataComponentTypes;
 import net.xandork.gyrobladesmod.entity.ModEntities;
 import net.xandork.gyrobladesmod.entity.client.BeigomaProjectileRenderer;
 import net.xandork.gyrobladesmod.entity.client.BeigomaRenderer;
-import net.xandork.gyrobladesmod.entity.custom.BeigomaProjectileEntity;
-import net.xandork.gyrobladesmod.events.ModEventBusClientEvents;
 import net.xandork.gyrobladesmod.item.ModCreativeModeTabs;
 import net.xandork.gyrobladesmod.item.ModItems;
+import net.xandork.gyrobladesmod.item.PartItems;
+import net.xandork.gyrobladesmod.recipe.ModRecipes;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -39,20 +39,26 @@ public class GyrobladesMod {
         // Register items, blocks, entities, etc.
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
+        PartItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
         ModDataComponentTypes.register(modEventBus);
 
         // Register event listeners for server and client
+        ModRecipes.register(modEventBus);
+
+        // Register event listeners
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
-
-        // Register client-side event listener
         modEventBus.addListener(ClientModEvents::onClientSetup);
+        modEventBus.addListener(this::commonSetup);
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Common setup logic
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        ModTags.registerTags(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
@@ -67,29 +73,37 @@ public class GyrobladesMod {
         // Server startup logic
     }
 
-    // Client-side setup
-    private void setupClient(final FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            System.out.println("FMLClientSetupEvent called!");
-            // If necessary, register item properties here (no custom renderer registration)
-            ItemProperties.register(ModItems.GYROBLADE_ITEM.get(),
-                    ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "gyroblade"),
-                    (stack, world, entity, seed) -> 1.0F
-            );
-        });
-    }
-
     @Mod.EventBusSubscriber(modid = GyrobladesMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
+    public class ClientModEvents {
+
         @SubscribeEvent
-        public static void onClientSetup(final FMLClientSetupEvent event) {
+        public static void onClientSetup(FMLClientSetupEvent event) {
             event.enqueueWork(() -> {
-                System.out.println("Manually setting renderer for Gyroblade");
+                // Register entity renderer for BeigomaProjectileEntity
+                EntityRenderers.register(ModEntities.BEIGOMAPROJECTILE.get(), BeigomaProjectileRenderer::new);
+
+                // Register entity renderer for BeigomaProjectileEntity
+                EntityRenderers.register(ModEntities.BEIGOMA.get(), BeigomaRenderer::new);
+
+                // Register custom rendering for specific items
                 ItemProperties.register(ModItems.GYROBLADE_ITEM.get(),
-                        ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "gyroblade"),
-                        (stack, world, entity, seed) -> 1.0F
+                        ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "custom_renderer"),
+                        (stack, level, entity, seed) -> 0
                 );
+
+                /*ItemProperties.register(ModItems.GYRO_RING.get(),
+                        ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "custom_renderer"),
+                        (stack, level, entity, seed) -> 0
+                );*/
             });
+        }
+    }
+    @Mod.EventBusSubscriber(modid = GyrobladesMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public class ModEventSubscriber {
+        @SubscribeEvent
+        public static void onRegisterItems(final FMLCommonSetupEvent event) {
+            // Register items
+            ModItems.register(FMLJavaModLoadingContext.get().getModEventBus());
         }
     }
 }

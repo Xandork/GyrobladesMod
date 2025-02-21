@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "gyrobladesmod:wooden_attack",
+    "gyrobladesmod:wooden_balance",
+    "gyrobladesmod:stone_attack",
+    "gyrobladesmod:stone_balance",
+    "gyrobladesmod:iron_attack",
+    "gyrobladesmod:iron_balance",
+    "gyrobladesmod:gold_attack",
+    "gyrobladesmod:gold_balance",
+    "gyrobladesmod:diamond_attack",
+    "gyrobladesmod:diamond_balance",
+    "gyrobladesmod:netherite_attack",
+    "gyrobladesmod:netherite_balance"
+  ]
+}

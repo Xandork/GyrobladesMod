@@ -12,11 +12,15 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.xandork.gyrobladesmod.GyrobladesMod;
 import net.xandork.gyrobladesmod.entity.ModEntities;
 import net.xandork.gyrobladesmod.entity.client.BeigomaModel;
 import net.xandork.gyrobladesmod.entity.custom.BeigomaEntity;
 import net.xandork.gyrobladesmod.entity.custom.BeigomaProjectileEntity;
+import net.xandork.gyrobladesmod.item.ModItems;
+import net.xandork.gyrobladesmod.recipe.ModRecipes;
 
 @Mod.EventBusSubscriber(modid = GyrobladesMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusEvents {
@@ -51,6 +55,14 @@ public class ModEventBusEvents {
 
             event.getDrops().add(itemDropX);
 
+        }
+    }
+    @Mod.EventBusSubscriber(modid = GyrobladesMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public class ModEventSubscriber {
+        @SubscribeEvent
+        public static void onCommonSetup(final FMLCommonSetupEvent event) {
+            ModItems.register(FMLJavaModLoadingContext.get().getModEventBus()); // Register items
+            ModRecipes.register(FMLJavaModLoadingContext.get().getModEventBus()); // Register recipes
         }
     }
 }

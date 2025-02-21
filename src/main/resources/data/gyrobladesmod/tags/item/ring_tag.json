@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "gyrobladesmod:wooden_ring1",
+    "gyrobladesmod:wooden_ring2",
+    "gyrobladesmod:wooden_ring3",
+    "gyrobladesmod:stone_ring1",
+    "gyrobladesmod:stone_ring2",
+    "gyrobladesmod:stone_ring3",
+    "gyrobladesmod:iron_ring1",
+    "gyrobladesmod:iron_ring2",
+    "gyrobladesmod:iron_ring3",
+    "gyrobladesmod:gold_ring1",
+    "gyrobladesmod:gold_ring2",
+    "gyrobladesmod:gold_ring3",
+    "gyrobladesmod:diamond_ring1",
+    "gyrobladesmod:diamond_ring2",
+    "gyrobladesmod:diamond_ring3",
+    "gyrobladesmod:netherite_ring1",
+    "gyrobladesmod:netherite_ring2",
+    "gyrobladesmod:netherite_ring3"
+  ]
+}

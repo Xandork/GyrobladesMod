@@ -14,6 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.xandork.gyrobladesmod.GyrobladesMod;
+import net.xandork.gyrobladesmod.component.ModDataComponentTypes;
 import net.xandork.gyrobladesmod.data.TextureMerger;
 import net.xandork.gyrobladesmod.item.client.GyrobladeItemRenderer;
 
@@ -33,22 +34,37 @@ public class GyrobladeItem extends Item {
     @OnlyIn(Dist.CLIENT)
     public ResourceLocation getMergedTexture(ItemStack stack) {
         // Create a list of textures to merge
-        List<ResourceLocation> texturesToMerge = List.of(baseTexture, overlayTexture, extraTexture);
+        //List<ResourceLocation> texturesToMerge = List.of(baseTexture, overlayTexture, extraTexture);
 
         // Merge and register the textures
-        return TextureMerger.mergeAndRegister(texturesToMerge);
+
+        List<ResourceLocation> textureLocations = stack.get(ModDataComponentTypes.TEXTURE_PATHS.get());
+        if (textureLocations == null) {
+            // Initialize with default texture paths if the component is null
+            textureLocations = List.of(
+                    ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "textures/item/iron_balance.png"),
+                    ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "textures/item/stone_disk0.png"),
+                    ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "textures/item/wooden_ring1.png"),
+                    ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "textures/item/iron_claw.png")
+            );
+
+            // Set the initialized texture paths back into the ItemStack
+            stack.set(ModDataComponentTypes.TEXTURE_PATHS.get(), textureLocations);
+        }
+
+        return TextureMerger.mergeAndRegister(textureLocations);
     }
     @Override
     public boolean isFoil(ItemStack stack) {
         return true; // Force Minecraft to check for a custom render
     }
-    @OnlyIn(Dist.CLIENT)
+    //@OnlyIn(Dist.CLIENT)
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(new IClientItemExtensions() {
             @Override
             public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                System.out.println("Custom renderer assigned to Gyroblade!");
+                //System.out.println("Custom renderer assigned to Gyroblade!");
                 return new GyrobladeItemRenderer(
                         Minecraft.getInstance().getBlockEntityRenderDispatcher(),
                         Minecraft.getInstance().getEntityModels()

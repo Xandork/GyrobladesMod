@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "gyrobladesmod:wooden_disk0",
+    "gyrobladesmod:wooden_disk3",
+    "gyrobladesmod:wooden_disk4",
+    "gyrobladesmod:stone_disk0",
+    "gyrobladesmod:stone_disk3",
+    "gyrobladesmod:stone_disk4",
+    "gyrobladesmod:iron_disk0",
+    "gyrobladesmod:iron_disk3",
+    "gyrobladesmod:iron_disk4",
+    "gyrobladesmod:gold_disk0",
+    "gyrobladesmod:gold_disk3",
+    "gyrobladesmod:gold_disk4",
+    "gyrobladesmod:diamond_disk0",
+    "gyrobladesmod:diamond_disk3",
+    "gyrobladesmod:diamond_disk4",
+    "gyrobladesmod:netherite_disk0",
+    "gyrobladesmod:netherite_disk3",
+    "gyrobladesmod:netherite_disk4"
+  ]
+}
