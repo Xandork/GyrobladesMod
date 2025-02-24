@@ -28,19 +28,14 @@ public class ColorShiftedItemRenderer extends BlockEntityWithoutLevelRenderer {
         float greenShift = colorShift[1];
         float blueShift = colorShift[2];
         */
-        // Get the original item texture (change path to match your item)
         ResourceLocation originalTexture = ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, stack.get(ModDataComponentTypes.PARTTEXTUREPATH.get()));
 
-        // Apply a color shift dynamically (adjust RGB shift values)
         ResourceLocation shiftedTexture = net.xandork.gyrobladesmod.data.TextureColorModifier.modifyTextureHue(originalTexture, 1, 1, 1);
 
-        // Get the model for the item
         BakedModel model = mc.getItemRenderer().getModel(stack, mc.level, null, 0);
 
-        // Get the correct buffer for rendering
         VertexConsumer vertexConsumer = buffer.getBuffer(net.minecraft.client.renderer.RenderType.itemEntityTranslucentCull(shiftedTexture));
 
-        // Render the model with the modified texture
         mc.getItemRenderer().renderModelLists(model, stack, light, OverlayTexture.NO_OVERLAY, poseStack, vertexConsumer);
     }
 }

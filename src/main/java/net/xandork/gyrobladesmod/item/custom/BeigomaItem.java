@@ -33,10 +33,8 @@ public class BeigomaItem extends Item {
     }
     @OnlyIn(Dist.CLIENT)
     public ResourceLocation getMergedTexture(ItemStack stack) {
-        // Create a list of textures to merge
         List<ResourceLocation> texturesToMerge = List.of(baseTexture, overlayTexture, extraTexture);
 
-        // Merge and register the textures
         return TextureMerger.mergeAndRegister(texturesToMerge);
     }
 

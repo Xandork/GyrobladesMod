@@ -9,7 +9,10 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.xandork.gyrobladesmod.ModTags;
 import net.xandork.gyrobladesmod.item.ModItems;
 
 import java.util.concurrent.CompletableFuture;
@@ -22,32 +25,27 @@ public class ModRecipeProvider extends RecipeProvider {
 
     @Override
     public void buildRecipes(RecipeOutput pRecipeOutput) {
-        // Corrected constructor for ShapelessRecipeBuilder
         ShapelessRecipeBuilder gyrobladeshapelessrecipe = ShapelessRecipeBuilder.shapeless(
                 RecipeCategory.BUILDING_BLOCKS,  // Recipe category
                 ModItems.GYROBLADE_ITEM.get(),   // Result item (ItemLike)
                 1                                // Number of ingredients
         );
 
-        // Add ingredients to the shapeless recipe
-        gyrobladeshapelessrecipe.requires(ModItems.RING_ITEM.get())
-                .requires(ModItems.DISK_ITEM.get())
-                .requires(ModItems.DRIVER_ITEM.get())
-                .requires(ModItems.BLADE_ITEM.get());
+        gyrobladeshapelessrecipe.requires(Ingredient.of(ModTags.Items.RING_TAG))
+                .requires(Ingredient.of(ModTags.Items.DISK_TAG))
+                .requires(Ingredient.of(ModTags.Items.DRIVER_TAG))
+                .requires(Ingredient.of(ModTags.Items.BLADE_TAG));
 
-        // Set unlock criteria
-        gyrobladeshapelessrecipe.unlockedBy("has_ring_item", has(ModItems.RING_ITEM.get()))
-                .unlockedBy("has_disk_item", has(ModItems.DISK_ITEM.get()))
-                .unlockedBy("has_driver_item", has(ModItems.DRIVER_ITEM.get()))
-                .unlockedBy("has_blade_item", has(ModItems.BLADE_ITEM.get()));
+        gyrobladeshapelessrecipe.unlockedBy("has_ring", has(ModTags.Items.RING_TAG))
+                .unlockedBy("has_disk", has(ModTags.Items.DISK_TAG))
+                .unlockedBy("has_driver", has(ModTags.Items.DRIVER_TAG))
+                .unlockedBy("has_blade", has(ModTags.Items.BLADE_TAG));
 
-        // Debugging log to confirm recipe creation
+
         System.out.println("Saving Shapeless Recipe: gyrobladesmod:gyroblade");
 
-        // Save the recipe
         gyrobladeshapelessrecipe.save(pRecipeOutput);
 
-        // Check if the recipe was added successfully
         System.out.println("Recipe Saved: gyrobladesmod:gyroblade");
     }
 

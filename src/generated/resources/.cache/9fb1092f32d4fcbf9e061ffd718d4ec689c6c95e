@@ -1,4 +1,4 @@
-// 1.21	2025-02-20T10:39:37.6710567	Recipes
+// 1.21	2025-02-21T17:08:14.6856195	Recipes
 e049b27a4bac03dc4c19e617d6cbbaf9fc31c7b4 data/gyrobladesmod/advancement/recipes/misc/barrel_arena.json
 26dc8e900be53906668cb4c2d429bdb507c8f650 data/gyrobladesmod/advancement/recipes/misc/diamond_attack.json
 5e5b84d76a85eb62129f7f43ac65e6349d6144da data/gyrobladesmod/advancement/recipes/misc/diamond_balance.json
@@ -138,7 +138,7 @@ f355bdae31ccd442518ef7d15d7105a0fbd49795 data/gyrobladesmod/recipe/gyrite_crysta
 1c5b1dd41947e94533e581b211556c58de047c7b data/gyrobladesmod/recipe/gyrite_crystal_from_smelting_gyrite_deepslate_ore.json
 1ab60e1e51a082f94125d3d706cc3360033082aa data/gyrobladesmod/recipe/gyrite_crystal_from_smelting_gyrite_ore.json
 dae50b75c39bdf3771af0adc08e1e582244da1e3 data/gyrobladesmod/recipe/gyrite_crystal_from_smelting_raw_gyrite.json
-f55b4672471aa62e5718c0b1d3e225ba3644c9ae data/gyrobladesmod/recipe/gyroblade_item.json
+8de6560e47660052b941432af12688c62414b2a8 data/gyrobladesmod/recipe/gyroblade_item.json
 da120159f080a8174c688774721f5de2424c5b0c data/gyrobladesmod/recipe/iron_attack.json
 bb8e00b812a9c8471c3d3a97b5e2b41500636728 data/gyrobladesmod/recipe/iron_balance.json
 443142aef915b6da758462ec01e0b842e6105bb5 data/gyrobladesmod/recipe/iron_claw.json

@@ -21,11 +21,9 @@ public class ModRecipes {
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES =
             DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, GyrobladesMod.MOD_ID);
 
-    // Register the Recipe Serializer
     public static final RegistryObject<RecipeSerializer<GyrobladeRecipe>> GYROBLADE_RECIPE_SERIALIZER =
-            SERIALIZERS.register("gyroblade_item", GyrobladeRecipeSerializer::new);
+            SERIALIZERS.register("gyroblade_item", () -> new GyrobladeRecipe.GyrobladeRecipeSerializer());
 
-    // Register the Recipe Type
     public static final RegistryObject<RecipeType<GyrobladeRecipe>> GYROBLADE_RECIPE_TYPE =
             RECIPE_TYPES.register("gyroblade_item", () -> new RecipeType<>() {
                 @Override

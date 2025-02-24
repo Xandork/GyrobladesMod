@@ -33,14 +33,11 @@ public class GyrobladeItem extends Item {
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public ResourceLocation getMergedTexture(ItemStack stack) {
-        // Create a list of textures to merge
         //List<ResourceLocation> texturesToMerge = List.of(baseTexture, overlayTexture, extraTexture);
 
-        // Merge and register the textures
 
         List<ResourceLocation> textureLocations = stack.get(ModDataComponentTypes.TEXTURE_PATHS.get());
         if (textureLocations == null) {
-            // Initialize with default texture paths if the component is null
             textureLocations = List.of(
                     ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "textures/item/iron_balance.png"),
                     ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "textures/item/stone_disk0.png"),
@@ -48,7 +45,6 @@ public class GyrobladeItem extends Item {
                     ResourceLocation.fromNamespaceAndPath(GyrobladesMod.MOD_ID, "textures/item/iron_claw.png")
             );
 
-            // Set the initialized texture paths back into the ItemStack
             stack.set(ModDataComponentTypes.TEXTURE_PATHS.get(), textureLocations);
         }
 
@@ -56,7 +52,7 @@ public class GyrobladeItem extends Item {
     }
     @Override
     public boolean isFoil(ItemStack stack) {
-        return true; // Force Minecraft to check for a custom render
+        return true;
     }
     //@OnlyIn(Dist.CLIENT)
     @Override

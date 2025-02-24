@@ -137,7 +137,6 @@ public class GyrobladeItemRenderer extends BlockEntityWithoutLevelRenderer {
 
         Minecraft minecraft = Minecraft.getInstance();
 
-        // Register the custom renderer using IClientItemExtensions
         ModItems.GYROBLADE_ITEM.get().initializeClient(stack -> new IClientItemExtensions() {
             @Override
             public BlockEntityWithoutLevelRenderer getCustomRenderer() {
